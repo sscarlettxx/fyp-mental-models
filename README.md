@@ -1,8 +1,8 @@
-# Final Year Project
+Final Year Project
 
-Student: Sofia Scarlett  
-Programme: Computer Science BSc  
-University: University of Birmingham  
+Sofia Scarlett  
+Computer Science BSc  
+University of Birmingham  
 
-## Project Title
+Project Title
 Design and Evaluation of an Interactive Programming Learning Platform for Novice Programmers.

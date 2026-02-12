@@ -1,0 +1,57 @@
+[
+    {
+  "exercise_id": "VAR_01",
+  "misconception": "variable_reassignment",
+  "prompt": "What does this print?\n\nx = 3\nx = x + 2\nprint(x)",
+  "correct_answer": "5",
+  "wrong_answers": {
+    "3": "thinks reassignment doesn't replace value",
+    "32": "confuses numeric addition with string concatenation",
+    "x + 2": "user thinks it should output an expression, not result",
+    "2": "uses only the added amount"
+  }
+},
+
+{
+  "exercise_id": "VAR_02",
+  "misconception": "variable_reassignment",
+  "prompt": "What is x after each line is executed?\n\nx = 10\nx = x - 4\nx = x * 2",
+  "correct_answer": "10, 6, 12",
+  "wrong_answers": {
+    "10, 6, 20": "user thinks the updates don't carry forward"
+  }
+},
+
+{
+  "exercise_id": "VAR_03",
+  "misconception": "variable_reassignment",
+  "prompt": "What does this print?\n\na = 1\nb = 2\na = b\nb = a\nprint(a, b)",
+  "correct_answer": "2 2",
+  "wrong_answers": {
+    "2 1": "user thinks the assignments swap the numbers",
+    "1 2": "thinks nothing changed",
+    "1 1": "confuses the direction or overwrites both to 1"
+  }
+},
+
+{
+  "exercise_id": "VAR_04",
+  "misconception": "variable_reassignment",
+  "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb.append(3)\nprint(a)",
+  "correct_answer": "[1, 2 ,3]",
+  "wrong_answers": {
+    "[1, 2]": "user thinks b is a copy of a"
+  }
+},
+
+{
+  "exercise_id": "VAR_05",
+  "misconception": "variable_reassignment",
+  "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb = [9, 9]\nprint(a)",
+  "correct_answer": "[1, 2]",
+  "wrong_answers": {
+    "[9, 9]": "user thinks b = a changes a",
+    "[1, 2, 9, 9]": "user thinks the assignment combines the two"
+  }
+}
+]
