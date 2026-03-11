@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }} — {{ exercise.exercise_id }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 900px; margin: 32px auto; padding: 0 16px; }
+    .muted { color: #666; }
+    .panel { border: 1px solid #ddd; border-radius: 10px; padding: 14px 16px; margin: 14px 0; }
+    pre { white-space: pre-wrap; margin: 0; }
+    input[type="text"] { width: 100%; padding: 10px; font-size: 16px; }
+    button { padding: 10px 14px; font-size: 16px; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .badge { display: inline-block; padding: 3px 8px; border: 1px solid #999; border-radius: 999px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <p><a href="{{ url_for('index') }}">← Back</a></p>
+
+  <h1>{{ exercise.exercise_id }}</h1>
+  <div class="muted">
+    <span class="badge">{{ exercise.misconception }}</span>
+  </div>
+
+  <div class="panel">
+    <pre>{{ exercise.prompt }}</pre>
+  </div>
+
+  <form method="post" class="panel">
+    <label for="answer"><strong>Your answer</strong></label>
+    <div style="margin:10px 0;">
+      <input id="answer" name="answer" type="text" autocomplete="off" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  {% if result %}
+    <div class="panel">
+      <p>
+        <strong>Result:</strong>
+        {% if result.result == "correct" %}
+          ✅ Correct
+        {% elif result.result == "known_wrong" %}
+          ❌ Incorrect (recognised wrong answer)
+        {% else %}
+          ❌ Incorrect
+        {% endif %}
+      </p>
+
+      <p><strong>Feedback:</strong> {{ result.feedback }}</p>
+      <p><strong>Correct answer:</strong> {{ result.correct_answer }}</p>
+
+      <p class="muted">
+        Logged: raw="{{ result.raw_answer }}", normalised="{{ result.normalised_answer }}"
+      </p>
+    </div>
+  {% endif %}
+
+  <div class="row">
+    {% if prev_id %}
+      <a href="{{ url_for('exercise_page', exercise_id=prev_id) }}">← Prev</a>
+    {% endif %}
+    {% if next_id %}
+      <a href="{{ url_for('exercise_page', exercise_id=next_id) }}">Next →</a>
+    {% endif %}
+  </div>
+</body>
+</html>

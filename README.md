@@ -4,5 +4,5 @@ Sofia Scarlett
 Computer Science BSc  
 University of Birmingham  
 
-Project Title
+Project Title:
 Design and Evaluation of an Interactive Programming Learning Platform for Novice Programmers.
