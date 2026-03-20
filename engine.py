@@ -50,10 +50,10 @@ def normalise_answer(s: str) -> str:
     # Remove spaces around operators
     s = re.sub(r"\s*([+\-*/=<>])\s*", r"\1", s)
 
-    if s.lower() == "syntaxerror":
-        return "SyntaxError"
+    """if s.lower() == "syntaxerror":
+        return "SyntaxError """
 
-    return s
+    return s.lower()
 
 
 def _accepted_correct(exercise: Dict[str, Any]) -> List[str]:

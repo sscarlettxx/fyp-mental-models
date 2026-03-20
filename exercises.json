@@ -173,7 +173,7 @@
     "misconception": "loop_boundaries",
     "prompt": "What does this print?\n\nfor i in range(1, 4):\n    print(i)",
     "correct_answer": "1 2 3",
-    "accepted_correct": ["1 2 3", "1, 2, 3", "1,1,2,3", "1\n2\n3"],
+    "accepted_correct": ["1 2 3", "1, 2, 3", "1\n2\n3"],
     "wrong_answers": {
       "1 2 3 4": "You treated the stop value 4 as inclusive. But range(1, 4) stops before 4, so it prints 1, 2 and 3.",
       "0 1 2 3": "You started at 0, but this range starts at 1 because the first number in range(1, 4) is the starting value.",
@@ -199,7 +199,7 @@
     "misconception": "return_vs_print_and_scope",
     "prompt": "What does this print?\n\ndef f():\n    print(3)\n\nx = f()\nprint(x)",
     "correct_answer": "3 None",
-    "accepted_correct": ["3 None", "3, None", "3\nNone"],
+    "accepted_correct": ["3 None", "3, None", "3\nNone", "3 none"],
     "wrong_answers": {
       "3": "You only included the value printed inside the function. But x = f() stores the function's return value, and because there is no return statement, that value is None.",
       "3 3": "You treated print(3) as if it returned 3. It does not. The function prints 3, then returns None by default.",
