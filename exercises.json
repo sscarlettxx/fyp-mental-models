@@ -1,57 +1,262 @@
 [
-    {
-  "exercise_id": "VAR_01",
-  "misconception": "variable_reassignment",
-  "prompt": "What does this print?\n\nx = 3\nx = x + 2\nprint(x)",
-  "correct_answer": "5",
-  "wrong_answers": {
-    "3": "thinks reassignment doesn't replace value",
-    "32": "confuses numeric addition with string concatenation",
-    "x + 2": "user thinks it should output an expression, not result",
-    "2": "uses only the added amount"
+  {
+    "exercise_id": "VAR_01",
+    "misconception": "variable_reassignment",
+    "prompt": "What does this print?\n\nx = 3\nx = x + 2\nprint(x)",
+    "correct_answer": "5",
+    "accepted_correct": ["5"],
+    "wrong_answers": {
+      "3": "You assumed x stayed as 3. In Python, x is updated when reassigned. After x = x + 2, x becomes 5.",
+      "32": "You treated the numbers like strings. Here, + performs numerical addition, not concatenation.",
+      "x+2": "The program evaluates the expression before printing. It prints the result, not the expression.",
+      "2": "You only used the added value. The new value is based on the old value plus 2."
+    },
+    "fallback_feedback": "Incorrect. x starts as 3, then x = x + 2 updates it to 5, so the program prints 5."
+  },
+  {
+    "exercise_id": "VAR_02",
+    "misconception": "variable_reassignment",
+    "prompt": "What is x after each line is executed?\n\nx = 10\nx = x - 4\nx = x * 2",
+    "correct_answer": "10, 6, 12",
+    "accepted_correct": ["10, 6, 12", "10,6,12", "10 6 12"],
+    "wrong_answers": {
+      "10, 6, 20": "You treated the last line as if it still used the original value 10. Each line uses the updated value of x, so the final value is 12.",
+      "10, 4, 8": "You made x = x - 4 into 4, but 10 - 4 is 6. Then 6 * 2 becomes 12.",
+      "12": "This is only the final value. The question asks for x after each line: first 10, then 6, then 12."
+    },
+    "fallback_feedback": "Incorrect. Track x step by step: after the first line it is 10, after the second it is 6, and after the third it is 12."
+  },
+  {
+    "exercise_id": "VAR_03",
+    "misconception": "variable_reassignment",
+    "prompt": "What does this print?\n\na = 1\nb = 2\na = b\nb = a\nprint(a, b)",
+    "correct_answer": "2 2",
+    "accepted_correct": ["2 2", "2, 2", "2,2"],
+    "wrong_answers": {
+      "2 1": "You treated the two assignments like a swap. They happen one line at a time, so after a = b, a is already 2. Then b = a also makes b equal to 2.",
+      "1 2": "You treated the variables as if nothing changed. But a = b makes a become 2, and then b = a keeps b as 2 as well.",
+      "1 1": "You mixed up the direction of assignment. The value 2 is copied into a first, and then that updated value is copied into b."
+    },
+    "fallback_feedback": "Incorrect. The assignments happen in sequence, not as a swap. After a = b, both variables end up as 2, so the program prints 2 2."
+  },
+  {
+    "exercise_id": "VAR_04",
+    "misconception": "variable_reassignment",
+    "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb.append(3)\nprint(a)",
+    "correct_answer": "[1, 2, 3]",
+    "accepted_correct": ["[1, 2, 3]", "[1,2,3]"],
+    "wrong_answers": {
+      "[1, 2]": "You assumed b was a separate copy of a. But b = a makes both names refer to the same list, so appending 3 through b also changes a.",
+      "[1, 2, 3, 3]": "The append happens once, not twice. Because a and b refer to the same list, the single append changes that one shared list to [1, 2, 3]."
+    },
+    "fallback_feedback": "Incorrect. b = a does not create a copy. Both names refer to the same list, so b.append(3) changes the list that a also refers to."
+  },
+  {
+    "exercise_id": "VAR_05",
+    "misconception": "variable_reassignment",
+    "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb = [9, 9]\nprint(a)",
+    "correct_answer": "[1, 2]",
+    "accepted_correct": ["[1, 2]", "[1,2]"],
+    "wrong_answers": {
+      "[9, 9]": "You assumed reassigning b also changed a. But b = [9, 9] makes b refer to a new list, while a still refers to the original list [1, 2].",
+      "[1, 2, 9, 9]": "Assignment does not combine lists here. Reassigning b just makes b point to a different list; a stays as [1, 2]."
+    },
+    "fallback_feedback": "Incorrect. Reassigning b does not change a. After b = [9, 9], only b points to the new list, so a still prints as [1, 2]."
   }
-},
-
-{
-  "exercise_id": "VAR_02",
-  "misconception": "variable_reassignment",
-  "prompt": "What is x after each line is executed?\n\nx = 10\nx = x - 4\nx = x * 2",
-  "correct_answer": "10, 6, 12",
-  "wrong_answers": {
-    "10, 6, 20": "user thinks the updates don't carry forward"
+,
+  {
+    "exercise_id": "EQ_01",
+    "misconception": "assignment_vs_equality",
+    "prompt": "What does this print?\n\nx = 5\nprint(x == 5)",
+    "correct_answer": "True",
+    "accepted_correct": ["True", "true"],
+    "wrong_answers": {
+      "5": "You treated == like assignment. Here, == compares values and produces True or False. Since x is 5, the comparison is True.",
+      "False": "You treated the comparison as false, but x is 5, so x == 5 evaluates to True.",
+      "x==5": "The program does not print the expression itself. It evaluates the comparison first, then prints the result True."
+    },
+    "fallback_feedback": "Incorrect. == compares two values. Because x is 5, x == 5 evaluates to True, so the program prints True."
+  },
+  {
+    "exercise_id": "EQ_02",
+    "misconception": "assignment_vs_equality",
+    "prompt": "What does this print?\n\nx = 4\nif x == 5:\n    print(\"A\")\nelse:\n    print(\"B\")",
+    "correct_answer": "B",
+    "accepted_correct": ["B", "b"],
+    "wrong_answers": {
+      "A": "You treated == as if it changed x to 5. It does not. It only checks whether x is already equal to 5. Since x is 4, the else branch runs and prints B.",
+      "True": "The code does not print the condition result. It prints either A or B depending on whether the condition is true.",
+      "A B": "Only one branch of an if statement runs. Because x == 5 is false, only the else branch runs and prints B."
+    },
+    "fallback_feedback": "Incorrect. == checks whether x is equal to 5. Since x is 4, the condition is false, so the else branch runs and the program prints B."
+  },
+  {
+    "exercise_id": "EQ_03",
+    "misconception": "assignment_vs_equality",
+    "prompt": "What happens when this code runs?\n\nx = 5\nif x = 5:\n    print(\"yes\")",
+    "correct_answer": "SyntaxError",
+    "accepted_correct": ["SyntaxError", "syntaxerror", "syntax error"],
+    "wrong_answers": {
+      "yes": "You treated = like a comparison inside the if statement. In Python, = is assignment, not comparison, so this code causes a SyntaxError.",
+      "True": "The condition is not evaluated successfully. Python raises a SyntaxError because = cannot be used this way inside an if statement.",
+      "B": "There is no else branch here. The real issue is that the line if x = 5 is invalid Python syntax."
+    },
+    "fallback_feedback": "Incorrect. In Python, = is used for assignment, while == is used for comparison. So if x = 5 causes a SyntaxError."
+  },
+  {
+    "exercise_id": "EQ_04",
+    "misconception": "assignment_vs_equality",
+    "prompt": "What does this print?\n\nx = 1\ny = 2\nx = y\nprint(x == y, x, y)",
+    "correct_answer": "True 2 2",
+    "accepted_correct": ["True 2 2", "true 2 2", "True, 2, 2", "True,2,2"],
+    "wrong_answers": {
+      "False 2 2": "You updated x correctly, but then treated == as if it still gave False. After x = y, both x and y are 2, so x == y is True.",
+      "True 1 2": "You treated x = y like a comparison instead of an assignment. That line updates x so it becomes 2.",
+      "False 1 2": "You treated x = y as if it did nothing and also treated x == y as false. In fact, x becomes 2, y is 2, and the comparison is True."
+    },
+    "fallback_feedback": "Incorrect. The line x = y assigns the value 2 to x. After that, both x and y are 2, so x == y is True and the program prints True 2 2."
+  },
+  {
+    "exercise_id": "EQ_05",
+    "misconception": "assignment_vs_equality",
+    "prompt": "What does this print?\n\na = [1, 2]\nb = [1, 2]\nprint(a == b)",
+    "correct_answer": "True",
+    "accepted_correct": ["True", "true"],
+    "wrong_answers": {
+      "False": "You treated equality as if it only means 'the exact same object'. Here, == checks whether the values are equal, and both lists contain the same items, so the result is True.",
+      "[1, 2]": "The program does not print one of the lists. It evaluates a == b first and then prints the Boolean result True.",
+      "a==b": "The expression is evaluated before printing. Since the two lists have the same contents, the comparison result is True."
+    },
+    "fallback_feedback": "Incorrect. == checks whether two values are equal. These two lists have the same contents, so a == b evaluates to True."
+  },
+  {
+    "exercise_id": "LOOP_01",
+    "misconception": "loop_boundaries",
+    "prompt": "What does this print?\n\nfor i in range(5):\n    print(i)",
+    "correct_answer": "0 1 2 3 4",
+    "accepted_correct": ["0 1 2 3 4", "0, 1, 2, 3, 4", "0,1,2,3,4", "0\n1\n2\n3\n4"],
+    "wrong_answers": {
+      "0 1 2 3 4 5": "You treated the stop value in range(5) as inclusive. In Python, range(5) starts at 0 and stops before 5, so the last value printed is 4.",
+      "1 2 3 4 5": "You started at 1, but range(5) starts at 0 by default. It prints 0, 1, 2, 3, 4.",
+      "5": "The loop runs five times, but it does not print only the number 5. It prints each value produced by range(5): 0 through 4."
+    },
+    "fallback_feedback": "Incorrect. range(5) produces the values 0, 1, 2, 3 and 4. The stop value 5 is not included, so that is what the loop prints."
+  },
+  {
+    "exercise_id": "LOOP_02",
+    "misconception": "loop_boundaries",
+    "prompt": "How many times does this loop run?\n\ncount = 0\nfor i in range(2, 6):\n    count += 1\nprint(count)",
+    "correct_answer": "4",
+    "accepted_correct": ["4"],
+    "wrong_answers": {
+      "5": "You counted the stop value 6 as included. In Python, range(2, 6) gives 2, 3, 4 and 5, so the loop runs 4 times.",
+      "6": "You used the stop value itself as the answer. But the question is how many values range(2, 6) produces, which is 4.",
+      "3": "You missed one of the values. range(2, 6) includes 2, 3, 4 and 5, so the loop runs 4 times."
+    },
+    "fallback_feedback": "Incorrect. range(2, 6) produces 2, 3, 4 and 5. That is four values, so the loop runs 4 times and prints 4."
+  },
+  {
+    "exercise_id": "LOOP_03",
+    "misconception": "loop_boundaries",
+    "prompt": "What does this print?\n\nx = 3\nwhile x > 0:\n    x -= 1\nprint(x)",
+    "correct_answer": "0",
+    "accepted_correct": ["0"],
+    "wrong_answers": {
+      "-1": "You assumed the loop runs one extra time after x reaches 0. But the while condition is checked before each iteration, so the loop stops as soon as x is no longer greater than 0.",
+      "1": "You stopped the loop too early. Starting from 3, x becomes 2, then 1, then 0, and only then does the loop stop.",
+      "3": "You ignored the repeated updates inside the loop. Each iteration subtracts 1 from x until it reaches 0."
+    },
+    "fallback_feedback": "Incorrect. The loop keeps subtracting 1 while x is greater than 0. Starting from 3, x becomes 2, then 1, then 0, and the program prints 0."
+  },
+  {
+    "exercise_id": "LOOP_04",
+    "misconception": "loop_boundaries",
+    "prompt": "What does this print?\n\nfor i in range(1, 4):\n    print(i)",
+    "correct_answer": "1 2 3",
+    "accepted_correct": ["1 2 3", "1, 2, 3", "1,1,2,3", "1\n2\n3"],
+    "wrong_answers": {
+      "1 2 3 4": "You treated the stop value 4 as inclusive. But range(1, 4) stops before 4, so it prints 1, 2 and 3.",
+      "0 1 2 3": "You started at 0, but this range starts at 1 because the first number in range(1, 4) is the starting value.",
+      "2 3 4": "You shifted the whole range up by one. range(1, 4) begins at 1 and stops before 4, so it prints 1, 2 and 3."
+    },
+    "fallback_feedback": "Incorrect. range(1, 4) starts at 1 and stops before 4, so the loop prints 1, 2 and 3."
+  },
+  {
+    "exercise_id": "LOOP_05",
+    "misconception": "loop_boundaries",
+    "prompt": "What does this print?\n\ntotal = 0\nfor i in range(1, 6):\n    total += i\nprint(total)",
+    "correct_answer": "15",
+    "accepted_correct": ["15"],
+    "wrong_answers": {
+      "21": "You treated range(1, 6) as if it included 6. But it stops before 6, so the values added are 1, 2, 3, 4 and 5, which sum to 15.",
+      "10": "You stopped the range too early. The loop adds 1 through 5, not just 1 through 4.",
+      "6": "You may have confused the stop value with the total. The code adds all the numbers from 1 to 5, so the total becomes 15."
+    },
+    "fallback_feedback": "Incorrect. range(1, 6) produces 1, 2, 3, 4 and 5. Adding those values gives 15, so the program prints 15."
+  },
+  {
+    "exercise_id": "RET_01",
+    "misconception": "return_vs_print_and_scope",
+    "prompt": "What does this print?\n\ndef f():\n    print(3)\n\nx = f()\nprint(x)",
+    "correct_answer": "3 None",
+    "accepted_correct": ["3 None", "3, None", "3\nNone"],
+    "wrong_answers": {
+      "3": "You only included the value printed inside the function. But x = f() stores the function's return value, and because there is no return statement, that value is None.",
+      "3 3": "You treated print(3) as if it returned 3. It does not. The function prints 3, then returns None by default.",
+      "None": "You ignored the print inside the function. The function first prints 3, then x stores None, so print(x) prints None."
+    },
+    "fallback_feedback": "Incorrect. The function prints 3, but it does not return anything explicitly, so Python returns None. That means the program prints 3 and then None."
+  },
+  {
+    "exercise_id": "RET_02",
+    "misconception": "return_vs_print_and_scope",
+    "prompt": "What does this print?\n\ndef add_one(n):\n    return n + 1\n\nprint(add_one(4) + 10)",
+    "correct_answer": "15",
+    "accepted_correct": ["15"],
+    "wrong_answers": {
+      "5": "You used the function result but ignored the + 10 outside it. add_one(4) returns 5, and then the program adds 10, giving 15.",
+      "14": "You seem to have added 10 first and then 1, or made an arithmetic slip. The function returns 5, and 5 + 10 is 15.",
+      "None": "You treated the function as if it did not return a value. But it has a return statement, so add_one(4) returns 5."
+    },
+    "fallback_feedback": "Incorrect. add_one(4) returns 5 because the function adds 1 to 4. Then the program adds 10, so the final result printed is 15."
+  },
+  {
+    "exercise_id": "RET_03",
+    "misconception": "return_vs_print_and_scope",
+    "prompt": "What does this print?\n\nx = 10\n\ndef g():\n    x = 99\n\ng()\nprint(x)",
+    "correct_answer": "10",
+    "accepted_correct": ["10"],
+    "wrong_answers": {
+      "99": "You assumed changing x inside the function would also change the x outside it. But the x inside g is local to the function, so the global x remains 10.",
+      "None": "The function does not return anything, but that does not affect the print statement here. The code prints the global x, which is still 10.",
+      "10 99": "The code only prints x once, after the function call. Since the function's x is local, the printed value is just 10."
+    },
+    "fallback_feedback": "Incorrect. The x inside the function is a separate local variable. It does not change the x outside the function, so the program prints 10."
+  },
+  {
+    "exercise_id": "RET_04",
+    "misconception": "return_vs_print_and_scope",
+    "prompt": "What does this print?\n\nx = 10\n\ndef g(x):\n    x = 99\n    return x\n\nx = g(x)\nprint(x)",
+    "correct_answer": "99",
+    "accepted_correct": ["99"],
+    "wrong_answers": {
+      "10": "You ignored the returned value. The function returns 99, and then x = g(x) stores that returned value back into x.",
+      "None": "You treated the function as if it returned nothing, but it explicitly returns x after setting it to 99.",
+      "10 99": "The code only prints x once at the end. Because x is reassigned to the function's returned value, the final printed result is 99."
+    },
+    "fallback_feedback": "Incorrect. Inside the function, x becomes 99 and that value is returned. Then x = g(x) updates the outer x, so the program prints 99."
+  },
+  {
+    "exercise_id": "RET_05",
+    "misconception": "return_vs_print_and_scope",
+    "prompt": "What does this print?\n\ndef h():\n    print(\"A\")\n    return\n    print(\"B\")\n\nh()",
+    "correct_answer": "A",
+    "accepted_correct": ["A", "a"],
+    "wrong_answers": {
+      "A B": "You treated return as if the function would keep going afterwards. But return stops the function immediately, so the line print(\"B\") never runs.",
+      "B": "The function prints A before reaching the return statement. Once return runs, the function ends and B is never printed.",
+      "None": "The function call itself returns None, but this code does not print that return value. It only prints A before the function ends."
+    },
+    "fallback_feedback": "Incorrect. The function prints A, then the return statement stops the function immediately. That means print(\"B\") never runs, so the only output is A."
   }
-},
-
-{
-  "exercise_id": "VAR_03",
-  "misconception": "variable_reassignment",
-  "prompt": "What does this print?\n\na = 1\nb = 2\na = b\nb = a\nprint(a, b)",
-  "correct_answer": "2 2",
-  "wrong_answers": {
-    "2 1": "user thinks the assignments swap the numbers",
-    "1 2": "thinks nothing changed",
-    "1 1": "confuses the direction or overwrites both to 1"
-  }
-},
-
-{
-  "exercise_id": "VAR_04",
-  "misconception": "variable_reassignment",
-  "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb.append(3)\nprint(a)",
-  "correct_answer": "[1, 2 ,3]",
-  "wrong_answers": {
-    "[1, 2]": "user thinks b is a copy of a"
-  }
-},
-
-{
-  "exercise_id": "VAR_05",
-  "misconception": "variable_reassignment",
-  "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb = [9, 9]\nprint(a)",
-  "correct_answer": "[1, 2]",
-  "wrong_answers": {
-    "[9, 9]": "user thinks b = a changes a",
-    "[1, 2, 9, 9]": "user thinks the assignment combines the two"
-  }
-}
 ]

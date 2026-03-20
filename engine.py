@@ -85,6 +85,8 @@ def check_answer(
     norm = normalise_answer(raw)
 
     accepted = _accepted_correct(exercise)
+    wrong_answers: Dict[str, str] = exercise.get("wrong_answers", {}) or {}
+    fallback_feedback = str(exercise.get("fallback_feedback") or "Incorrect.")
     if norm in accepted:
         return {
             "result": "correct",
@@ -92,10 +94,10 @@ def check_answer(
             "normalised_answer": norm,
             "wrong_key": None,
             "feedback": exercise.get("feedback_correct") or "Correct.",
+            "fallback_feedback": str(exercise.get("fallback_feedback") or "Incorrect."),
             "correct_answer": str(exercise.get("correct_answer", "")),
         }
 
-    wrong_answers: Dict[str, str] = exercise.get("wrong_answers", {}) or {}
     # Match against normalised keys
     for wrong_key, meaning in wrong_answers.items():
         if norm == normalise_answer(str(wrong_key)):
@@ -106,6 +108,7 @@ def check_answer(
                 "normalised_answer": norm,
                 "wrong_key": str(wrong_key),
                 "feedback": meaning,
+                "fallback_feedback": fallback_feedback,
                 "correct_answer": str(exercise.get("correct_answer", "")),
             }
 
@@ -114,7 +117,8 @@ def check_answer(
         "raw_answer": raw,
         "normalised_answer": norm,
         "wrong_key": None,
-        "feedback": "Incorrect.",
+        "feedback": fallback_feedback,
+        "fallback_feedback": fallback_feedback,
         "correct_answer": str(exercise.get("correct_answer", "")),
     }
 
