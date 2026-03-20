@@ -95,7 +95,7 @@
     "misconception": "assignment_vs_equality",
     "prompt": "What happens when this code runs?\n\nx = 5\nif x = 5:\n    print(\"yes\")",
     "correct_answer": "SyntaxError",
-    "accepted_correct": ["SyntaxError", "syntaxerror", "syntax error"],
+    "accepted_correct": ["SyntaxError", "syntaxerror", "syntax error", "a syntax error", "a syntaxerror"],
     "wrong_answers": {
       "yes": "You treated = like a comparison inside the if statement. In Python, = is assignment, not comparison, so this code causes a SyntaxError.",
       "True": "The condition is not evaluated successfully. Python raises a SyntaxError because = cannot be used this way inside an if statement.",

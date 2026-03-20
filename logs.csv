@@ -43,3 +43,14 @@ timestamp,exercise_id,misconception,raw_answer,normalised_answer,result,wrong_ke
 2026-03-20T08:05:07,RET_01,return_vs_print_and_scope,"3,none",3 none,correct,
 2026-03-20T08:05:56,RET_02,return_vs_print_and_scope,15,15,correct,
 2026-03-20T08:06:39,RET_03,return_vs_print_and_scope,99,99,known_wrong,99
+2026-03-20T08:11:58,EQ_01,assignment_vs_equality,TRUE,true,correct,
+2026-03-20T08:12:01,EQ_01,assignment_vs_equality,true,true,correct,
+2026-03-20T08:12:11,EQ_01,assignment_vs_equality,5,5,known_wrong,5
+2026-03-20T08:13:02,EQ_03,assignment_vs_equality,yes,yes,known_wrong,yes
+2026-03-20T08:13:18,EQ_03,assignment_vs_equality,syntaxerror,syntaxerror,correct,
+2026-03-20T08:13:23,EQ_03,assignment_vs_equality,syntax error,syntax error,correct,
+2026-03-20T08:13:30,EQ_03,assignment_vs_equality,a syntax error,a syntax error,other_wrong,
+2026-03-20T08:13:35,EQ_03,assignment_vs_equality,error,error,other_wrong,
+2026-03-20T08:14:59,EQ_03,assignment_vs_equality,a syntax error,a syntax error,correct,
+2026-03-20T08:15:07,EQ_03,assignment_vs_equality,a syntaxerror,a syntaxerror,other_wrong,
+2026-03-20T08:15:59,EQ_03,assignment_vs_equality,a SyntaxError,a syntaxerror,correct,
