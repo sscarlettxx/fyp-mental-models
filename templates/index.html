@@ -7,23 +7,23 @@
   <style>
     body { font-family: system-ui, Arial, sans-serif; max-width: 900px; margin: 32px auto; padding: 0 16px; }
     a { text-decoration: none; }
-    .card { border: 1px solid #ddd; border-radius: 10px; padding: 14px 16px; margin: 10px 0; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 16px; margin: 12px 0; }
     .muted { color: #666; }
-    .btn { display: inline-block; padding: 10px 14px; border: 1px solid #333; border-radius: 10px; }
+    .btn { display: inline-block; padding: 10px 14px; border: 1px solid #333; border-radius: 10px; margin-top: 10px; }
   </style>
 </head>
 <body>
   <h1>{{ title }}</h1>
-  <p class="muted">Exercises loaded: {{ exercises|length }}</p>
+  <p class="muted">Choose a topic section to begin.</p>
 
-  <p><a class="btn" href="{{ url_for('start') }}">Start</a></p>
-
-  {% for ex in exercises %}
+  {% for category in categories %}
     <div class="card">
-      <div><strong>{{ ex.exercise_id }}</strong> — <span class="muted">{{ ex.misconception }}</span></div>
-      <div style="margin-top:8px;">
-        <a href="{{ url_for('exercise_page', exercise_id=ex.exercise_id) }}">Open</a>
-      </div>
+      <h2 style="margin-top:0;">{{ category.label }}</h2>
+      <p>{{ category.description }}</p>
+      <p class="muted">Exercises in this section: {{ category.count }}</p>
+      {% if category.first_exercise_id %}
+        <a class="btn" href="{{ url_for('topic_page', category_key=category.key) }}">Open section</a>
+      {% endif %}
     </div>
   {% endfor %}
 </body>

@@ -16,11 +16,16 @@
   </style>
 </head>
 <body>
-  <p><a href="{{ url_for('index') }}">← Back</a></p>
+  <p>
+  <a href="{{ url_for('index') }}">← Topics</a>
+  {% if category_key %}
+    | <a href="{{ url_for('topic_page', category_key=category_key) }}">Back to {{ category_label }}</a>
+  {% endif %}
+</p>
 
   <h1>{{ exercise.exercise_id }}</h1>
   <div class="muted">
-    <span class="badge">{{ exercise.misconception }}</span>
+    <span class="badge">{{ category_label }}</span>
   </div>
 
   <div class="panel">

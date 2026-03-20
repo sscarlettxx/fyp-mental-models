@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }} — {{ category_label }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 900px; margin: 32px auto; padding: 0 16px; }
+    a { text-decoration: none; }
+    .card { border: 1px solid #ddd; border-radius: 10px; padding: 14px 16px; margin: 10px 0; }
+    .muted { color: #666; }
+    .btn { display: inline-block; padding: 10px 14px; border: 1px solid #333; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <p><a href="{{ url_for('index') }}">← Back to topics</a></p>
+
+  <h1>{{ category_label }}</h1>
+  <p>{{ category_description }}</p>
+
+  {% for ex in exercises %}
+    <div class="card">
+      <div><strong>{{ ex.exercise_id }}</strong></div>
+      <div class="muted" style="margin:8px 0;">{{ ex.prompt.split('\n')[0] }}</div>
+      <a class="btn" href="{{ url_for('exercise_page', exercise_id=ex.exercise_id) }}">Open exercise</a>
+    </div>
+  {% endfor %}
+</body>
+</html>
