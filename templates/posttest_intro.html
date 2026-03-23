@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }} — Post-test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 750px; margin: 50px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 28px; }
+    .btn { display: inline-block; margin-top: 20px; padding: 10px 14px; border: 1px solid #333; border-radius: 10px; text-decoration: none; color: inherit; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Post-test</h1>
+
+    <p>You have completed the training section.</p>
+
+    <p>You will now complete the final part of the study.</p>
+
+    <p>This section is similar to the pre-test. You will not receive feedback after answering.</p>
+
+    <p>Please answer each question carefully based on what you have learned.</p>
+
+    <a class="btn" href="{{ url_for('study_posttest_start') }}">Start Post-test</a>
+  </div>
+</body>
+</html>

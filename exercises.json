@@ -14,6 +14,19 @@
     "fallback_feedback": "Incorrect. x starts as 3, then x = x + 2 updates it to 5, so the program prints 5."
   },
   {
+    "exercise_id": "VAR_06",
+    "misconception": "variable_reassignment",
+    "prompt": "What does this print?\n\nx = 2\ny = x\nx = 5\nprint(y)",
+    "correct_answer": "2",
+    "accepted_correct": ["2"],
+    "wrong_answers": {
+      "5": "You assumed y changes when x changes. But y was given the value of x at that moment, so changing x later does not change y.",
+      "x": "The program does not print the variable name itself. It prints the value currently stored in y, which is 2.",
+      "25": "You combined the two numbers, but the code does not join them together. y keeps the value 2 even after x changes to 5."
+    },
+    "fallback_feedback": "Incorrect. y is assigned the value of x when x is 2. Later, x changes to 5, but that does not change y, so the program prints 2."
+  },
+  {
     "exercise_id": "VAR_02",
     "misconception": "variable_reassignment",
     "prompt": "What is x after each line is executed?\n\nx = 10\nx = x - 4\nx = x * 2",

@@ -10,7 +10,7 @@ def load_exercises(path: str | Path) -> List[Dict[str, Any]]:
     if not isinstance(data, list):
         raise ValueError("exercises.json must be a JSON list (top-level []).")
 
-    required = {"exercise_id", "misconception", "prompt", "correct_answer", "wrong_answers"}
+    required = {"exercise_id", "misconception", "prompt", "correct_answer"}
     for ex in data:
         if not isinstance(ex, dict):
             raise ValueError("Each exercise must be a JSON object.")
@@ -18,7 +18,7 @@ def load_exercises(path: str | Path) -> List[Dict[str, Any]]:
         if missing:
             raise ValueError(f"Exercise missing keys {missing}: {ex}")
 
-        if not isinstance(ex["wrong_answers"], dict):
+        if "wrong_answers" in ex and not isinstance(ex["wrong_answers"], dict):
             raise ValueError(f'Exercise {ex.get("exercise_id")} wrong_answers must be an object.')
 
     return data

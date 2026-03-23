@@ -1,0 +1,42 @@
+[
+  {
+    "exercise_id": "POST_01",
+    "misconception": "variable_reassignment",
+    "prompt": "What does this print?\n\na = 10\nb = a\na = 1\nprint(b)",
+    "correct_answer": "10",
+    "accepted_correct": ["10"],
+    "fallback_feedback": "Post-test mode: no feedback."
+  },
+  {
+    "exercise_id": "POST_02",
+    "misconception": "assignment_vs_equality",
+    "prompt": "What does this print?\n\nx = 7\nif x == 7:\n    print(\"yes\")\nelse:\n    print(\"no\")",
+    "correct_answer": "yes",
+    "accepted_correct": ["yes", "Yes"],
+    "fallback_feedback": "Post-test mode: no feedback."
+  },
+  {
+    "exercise_id": "POST_03",
+    "misconception": "loop_boundaries",
+    "prompt": "What does this print?\n\nfor i in range(1, 5):\n    print(i)",
+    "correct_answer": "1 2 3 4",
+    "accepted_correct": ["1 2 3 4", "1, 2, 3, 4", "1,2,3,4", "1\n2\n3\n4"],
+    "fallback_feedback": "Post-test mode: no feedback."
+  },
+  {
+    "exercise_id": "POST_04",
+    "misconception": "loop_boundaries",
+    "prompt": "What does this print?\n\ntotal = 0\nfor i in range(4):\n    total += i\nprint(total)",
+    "correct_answer": "6",
+    "accepted_correct": ["6"],
+    "fallback_feedback": "Post-test mode: no feedback."
+  },
+  {
+    "exercise_id": "POST_05",
+    "misconception": "return_vs_print_and_scope",
+    "prompt": "What does this print?\n\ndef g():\n    print(5)\n\nx = g()\nprint(x)",
+    "correct_answer": "5 none",
+    "accepted_correct": ["5 none", "5 None", "5, None", "5\nNone", "5\nnone"],
+    "fallback_feedback": "Post-test mode: no feedback."
+  }
+]

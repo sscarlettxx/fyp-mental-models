@@ -1,0 +1,35 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }} — Study Introduction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 750px; margin: 50px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 28px; }
+    .btn { display: inline-block; margin-top: 20px; padding: 10px 14px; border: 1px solid #333; border-radius: 10px; text-decoration: none; color: inherit; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Welcome</h1>
+
+    <p>You are about to take part in a short study about how people understand programming.</p>
+
+    <p>This study has three parts:</p>
+    <ol>
+      <li>A short pre-test</li>
+      <li>A training section with feedback</li>
+      <li>A short post-test</li>
+    </ol>
+
+    <p>You do not need any prior programming experience.</p>
+
+    <p>Please answer each question carefully. Try your best even if you are unsure.</p>
+
+    <a class="btn" href="{{ url_for('study_pretest_start') }}">Start Pre-test</a>
+  </div>
+</body>
+</html>

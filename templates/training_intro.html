@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }} — Training</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 750px; margin: 50px auto; padding: 0 16px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 28px; }
+    .btn { display: inline-block; margin-top: 20px; padding: 10px 14px; border: 1px solid #333; border-radius: 10px; text-decoration: none; color: inherit; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Training Section</h1>
+
+    <p>You have completed the pre-test.</p>
+
+    <p>You will now go through a set of exercises designed to help you understand how programming works.</p>
+
+    <p>After each answer, you will be given feedback explaining what is correct or incorrect. Read this feedback carefully before continuing.</p>
+
+    <p>You can only move forward once you submit an answer.</p>
+
+    <a class="btn" href="{{ url_for('study_training_start') }}">Start Training</a>
+  </div>
+</body>
+</html>
