@@ -59,6 +59,9 @@ ensure_log_file(LOG_PATH)
 
 @app.route("/")
 def index():
+    session.pop("study_mode", None)
+    session.pop("training_sequence", None)
+    session.pop("mode", None)
     categories = []
     for category_key, category_label in CATEGORY_ORDER:
         items = CATEGORY_EXERCISES.get(category_key, [])
@@ -79,6 +82,7 @@ def index():
 
 @app.route("/topic/<category_key>")
 def topic_page(category_key: str):
+    session.pop("study_mode", None)
     session["mode"] = "training"
     session["training_sequence"] = False
     category_label = dict(CATEGORY_ORDER).get(category_key)
@@ -99,28 +103,17 @@ def topic_page(category_key: str):
 
 @app.route("/pretest")
 def start_pretest():
-    session["mode"] = "pretest"
-    if not _pretest_ids:
-        return redirect(url_for("index"))
-    return redirect(url_for("exercise_page", exercise_id=_pretest_ids[0]))
+    return redirect(url_for("study_start"))
 
 
 @app.route("/training")
 def start_training():
-    session["mode"] = "training"
-    session["training_sequence"] = True
-    first_training_id = TRAINING_IDS[0] if TRAINING_IDS else None
-    if not first_training_id:
-        return redirect(url_for("index"))
-    return redirect(url_for("exercise_page", exercise_id=first_training_id))
+    return redirect(url_for("study_start"))
 
 
 @app.route("/posttest")
 def start_posttest():
-    session["mode"] = "posttest"
-    if not _posttest_ids:
-        return redirect(url_for("index"))
-    return redirect(url_for("exercise_page", exercise_id=_posttest_ids[0]))
+    return redirect(url_for("study_start"))
 
 @app.route("/study")
 def study_start():
@@ -172,6 +165,16 @@ def study_posttest_start():
         return redirect(url_for("index"))
     return redirect(url_for("exercise_page", exercise_id=first_posttest_id))
 
+@app.route("/study/continue")
+def study_continue():
+    pending_next = session.pop("pending_next", None)
+    if pending_next == "study_posttest_intro":
+        return redirect(url_for("study_posttest_intro"))
+    if pending_next == "study_end":
+        return redirect(url_for("study_end"))
+    if pending_next:
+        return redirect(url_for("exercise_page", exercise_id=pending_next))
+    return redirect(url_for("study_start"))
 
 @app.route("/exercise/<exercise_id>", methods=["GET", "POST"])
 def exercise_page(exercise_id: str):
@@ -215,17 +218,20 @@ def exercise_page(exercise_id: str):
 
         study_mode = session.get("study_mode", False)
         if study_mode:
-            if next_id is not None:
-                return redirect(url_for("exercise_page", exercise_id=next_id))
-
-            if mode == "pretest":
-                return redirect(url_for("study_training_intro"))
-
             if mode == "training":
-                return redirect(url_for("study_posttest_intro"))
+                if next_id is not None:
+                    session["pending_next"] = next_id
+                else:
+                    session["pending_next"] = "study_posttest_intro"
+            else:
+                if next_id is not None:
+                    return redirect(url_for("exercise_page", exercise_id=next_id))
 
-            if mode == "posttest":
-                return redirect(url_for("study_end"))
+                if mode == "pretest":
+                    return redirect(url_for("study_training_intro"))
+
+                if mode == "posttest":
+                    return redirect(url_for("study_end"))
 
     return render_template(
         "exercise.html",
@@ -247,6 +253,7 @@ def start():
 
 @app.route("/study/end")
 def study_end():
+    session.pop("pending_next", None)
     session.pop("training_sequence", None)
     session.pop("study_mode", None)
     session.pop("mode", None)

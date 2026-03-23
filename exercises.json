@@ -6,12 +6,13 @@
     "correct_answer": "5",
     "accepted_correct": ["5"],
     "wrong_answers": {
-      "3": "You assumed x stayed as 3. In Python, x is updated when reassigned. After x = x + 2, x becomes 5.",
-      "32": "You treated the numbers like strings. Here, + performs numerical addition, not concatenation.",
-      "x+2": "The program evaluates the expression before printing. It prints the result, not the expression.",
-      "2": "You only used the added value. The new value is based on the old value plus 2."
+      "3": "Not quite. x does not stay as 3. The line `x = x + 2` means: take the current value of x, add 2, and store the new result back into x. So x starts as 3, then becomes 5, and `print(x)` prints 5.",
+      "32": "Not quite. That answer would only make sense if Python were joining text together. Here, x is a number, so `x + 2` means numerical addition: 3 + 2 = 5.",
+      "x+2": "Not quite. Python does not print the expression itself here. It works out the expression first, changes x to that result, and then prints the final value stored in x, which is 5.",
+      "2": "Not quite. You used only the amount being added. But `x = x + 2` uses the old value of x as well. Since x was 3, the new value becomes 3 + 2 = 5."
     },
-    "fallback_feedback": "Incorrect. x starts as 3, then x = x + 2 updates it to 5, so the program prints 5."
+    "fallback_feedback": "Incorrect. Read the code line by line. First x is 3. Then `x = x + 2` updates x to 5. After that, `print(x)` prints 5.",
+    "feedback_correct": "Correct. This code runs one line at a time. x starts as 3, then `x = x + 2` updates it to 5, so the final printed value is 5."
   },
   {
     "exercise_id": "VAR_06",
@@ -20,11 +21,12 @@
     "correct_answer": "2",
     "accepted_correct": ["2"],
     "wrong_answers": {
-      "5": "You assumed y changes when x changes. But y was given the value of x at that moment, so changing x later does not change y.",
-      "x": "The program does not print the variable name itself. It prints the value currently stored in y, which is 2.",
-      "25": "You combined the two numbers, but the code does not join them together. y keeps the value 2 even after x changes to 5."
+      "5": "Not quite. `y = x` gives y the value that x has at that moment, which is 2. After that, changing x to 5 does not go back and change y. So `print(y)` still prints 2.",
+      "x": "Not quite. `print(y)` prints the value stored in y, not the letter y or the variable name x. Since y was given the value 2, the output is 2.",
+      "25": "Not quite. The code does not join 2 and 5 together. y is set to 2 first, then x changes to 5 later, but y stays 2 the whole time."
     },
-    "fallback_feedback": "Incorrect. y is assigned the value of x when x is 2. Later, x changes to 5, but that does not change y, so the program prints 2."
+    "fallback_feedback": "Incorrect. Go step by step. x starts as 2. Then `y = x`, so y also becomes 2. Later x changes to 5, but y does not change. That is why `print(y)` prints 2.",
+    "feedback_correct": "Correct. `y = x` copies the current value of x into y. At that point the value is 2. Later x changes to 5, but y keeps the old value 2, so the output is 2."
   },
   {
     "exercise_id": "VAR_02",
@@ -84,11 +86,12 @@
     "correct_answer": "True",
     "accepted_correct": ["True", "true"],
     "wrong_answers": {
-      "5": "You treated == like assignment. Here, == compares values and produces True or False. Since x is 5, the comparison is True.",
-      "False": "You treated the comparison as false, but x is 5, so x == 5 evaluates to True.",
-      "x==5": "The program does not print the expression itself. It evaluates the comparison first, then prints the result True."
+      "5": "Not quite. `==` does not assign a value and it does not print x itself. It asks a question: 'Is x equal to 5?' The answer to that question is either `True` or `False`. Here the answer is `True`.",
+      "False": "Not quite. x really is 5 in this code. So when Python checks `x == 5`, the comparison is true, which means the program prints `True`.",
+      "x==5": "Not quite. Python does not print the comparison text itself. It evaluates the comparison first. Since x is 5, `x == 5` becomes `True`, and that is what gets printed."
     },
-    "fallback_feedback": "Incorrect. == compares two values. Because x is 5, x == 5 evaluates to True, so the program prints True."
+    "fallback_feedback": "Incorrect. `==` means 'compare these two values'. Because x has the value 5, the comparison `x == 5` is true, so the program prints `True`.",
+    "feedback_correct": "Correct. `==` checks whether two values are equal. Since x is 5, the statement `x == 5` is true, so `print(...)` prints `True`."
   },
   {
     "exercise_id": "EQ_02",
@@ -97,11 +100,12 @@
     "correct_answer": "B",
     "accepted_correct": ["B", "b"],
     "wrong_answers": {
-      "A": "You treated == as if it changed x to 5. It does not. It only checks whether x is already equal to 5. Since x is 4, the else branch runs and prints B.",
-      "True": "The code does not print the condition result. It prints either A or B depending on whether the condition is true.",
-      "A B": "Only one branch of an if statement runs. Because x == 5 is false, only the else branch runs and prints B."
+      "A": "Not quite. The condition is `x == 5`, which means 'is x equal to 5?' x is 4, not 5, so that condition is false. Because it is false, Python skips the `print(\"A\")` line and runs the `else` branch instead.",
+      "True": "Not quite. This code does not print the value of the condition itself. It uses the condition to decide which branch to run. Since x is not 5, the `else` branch runs and prints `B`.",
+      "A B": "Not quite. In an `if` statement, Python only runs one branch. Here the condition is false, so only the `else` branch runs. That means only `B` is printed."
     },
-    "fallback_feedback": "Incorrect. == checks whether x is equal to 5. Since x is 4, the condition is false, so the else branch runs and the program prints B."
+    "fallback_feedback": "Incorrect. Check the condition first: x is 4, so `x == 5` is false. That means Python runs the `else` part, and the output is `B`.",
+    "feedback_correct": "Correct. Python checks the condition `x == 5` first. Because x is 4, the condition is false, so it skips the first branch and prints `B` from the `else` branch."
   },
   {
     "exercise_id": "EQ_03",
@@ -149,11 +153,12 @@
     "correct_answer": "0 1 2 3 4",
     "accepted_correct": ["0 1 2 3 4", "0, 1, 2, 3, 4", "0,1,2,3,4", "0\n1\n2\n3\n4"],
     "wrong_answers": {
-      "0 1 2 3 4 5": "You treated the stop value in range(5) as inclusive. In Python, range(5) starts at 0 and stops before 5, so the last value printed is 4.",
-      "1 2 3 4 5": "You started at 1, but range(5) starts at 0 by default. It prints 0, 1, 2, 3, 4.",
-      "5": "The loop runs five times, but it does not print only the number 5. It prints each value produced by range(5): 0 through 4."
+      "0 1 2 3 4 5": "Not quite. In Python, `range(5)` starts at 0 and stops before 5. So 5 itself is not included. The values are 0, 1, 2, 3 and 4.",
+      "1 2 3 4 5": "Not quite. `range(5)` starts at 0 by default, not 1. It then continues up to, but not including, 5. So the output is 0, 1, 2, 3, 4.",
+      "5": "Not quite. The loop runs once for each value in `range(5)`. That means it prints five separate values: 0, 1, 2, 3 and 4, not just the number 5."
     },
-    "fallback_feedback": "Incorrect. range(5) produces the values 0, 1, 2, 3 and 4. The stop value 5 is not included, so that is what the loop prints."
+    "fallback_feedback": "Incorrect. `range(5)` produces these values in order: 0, 1, 2, 3, 4. The loop prints each one on a separate line, so the output is 0 1 2 3 4.",
+    "feedback_correct": "Correct. `range(5)` starts at 0 and stops before 5, so the loop prints 0, 1, 2, 3 and 4."
   },
   {
     "exercise_id": "LOOP_02",
@@ -188,11 +193,12 @@
     "correct_answer": "1 2 3",
     "accepted_correct": ["1 2 3", "1, 2, 3", "1\n2\n3"],
     "wrong_answers": {
-      "1 2 3 4": "You treated the stop value 4 as inclusive. But range(1, 4) stops before 4, so it prints 1, 2 and 3.",
-      "0 1 2 3": "You started at 0, but this range starts at 1 because the first number in range(1, 4) is the starting value.",
-      "2 3 4": "You shifted the whole range up by one. range(1, 4) begins at 1 and stops before 4, so it prints 1, 2 and 3."
+      "1 2 3 4": "Not quite. `range(1, 4)` starts at 1 but stops before 4. That means 4 is not included, so the loop prints only 1, 2 and 3.",
+      "0 1 2 3": "Not quite. This range does not start at 0. The first number in `range(1, 4)` tells Python where to start, so it begins at 1.",
+      "2 3 4": "Not quite. The loop does not start at 2 and it does not include 4. `range(1, 4)` means start at 1 and stop before 4, so the values are 1, 2 and 3."
     },
-    "fallback_feedback": "Incorrect. range(1, 4) starts at 1 and stops before 4, so the loop prints 1, 2 and 3."
+    "fallback_feedback": "Incorrect. `range(1, 4)` begins at 1 and stops before 4. So the loop prints 1, 2 and 3.",
+    "feedback_correct": "Correct. The first number in `range(1, 4)` is the start, and the second number is the stop value that is not included. So the output is 1, 2, 3."
   },
   {
     "exercise_id": "LOOP_05",
@@ -201,11 +207,12 @@
     "correct_answer": "15",
     "accepted_correct": ["15"],
     "wrong_answers": {
-      "21": "You treated range(1, 6) as if it included 6. But it stops before 6, so the values added are 1, 2, 3, 4 and 5, which sum to 15.",
-      "10": "You stopped the range too early. The loop adds 1 through 5, not just 1 through 4.",
-      "6": "You may have confused the stop value with the total. The code adds all the numbers from 1 to 5, so the total becomes 15."
+      "21": "Not quite. That answer would happen if the loop included 6 as well, but `range(1, 6)` stops before 6. So the loop adds 1 + 2 + 3 + 4 + 5, which equals 15.",
+      "10": "Not quite. That would be the total if you stopped too early at 4. But `range(1, 6)` includes 1, 2, 3, 4 and 5, so you must add all five numbers.",
+      "6": "Not quite. 6 is the stop value in the range, not the final total. The code keeps adding each loop value to `total`, so the final result is 15."
     },
-    "fallback_feedback": "Incorrect. range(1, 6) produces 1, 2, 3, 4 and 5. Adding those values gives 15, so the program prints 15."
+    "fallback_feedback": "Incorrect. Start with total = 0. Then the loop adds 1, then 2, then 3, then 4, then 5. After all those additions, total becomes 15.",
+    "feedback_correct": "Correct. The loop runs through 1, 2, 3, 4 and 5, and each value is added to `total`. So the final total is 15."
   },
   {
     "exercise_id": "RET_01",
@@ -214,11 +221,12 @@
     "correct_answer": "3 None",
     "accepted_correct": ["3 None", "3, None", "3\nNone", "3 none"],
     "wrong_answers": {
-      "3": "You only included the value printed inside the function. But x = f() stores the function's return value, and because there is no return statement, that value is None.",
-      "3 3": "You treated print(3) as if it returned 3. It does not. The function prints 3, then returns None by default.",
-      "None": "You ignored the print inside the function. The function first prints 3, then x stores None, so print(x) prints None."
+      "3": "Not quite. The function does print 3, but that is only the first output. Because the function has no `return` statement, it returns `None` by default. So `x = f()` stores `None`, and then `print(x)` prints `None` as the second output.",
+      "3 3": "Not quite. `print(3)` shows 3 on the screen, but it does not return the value 3. Since the function does not return anything, Python uses `None` as the return value.",
+      "None": "Not quite. You noticed the return value correctly, but you missed the earlier `print(3)` inside the function. So the full output is 3 first, then None."
     },
-    "fallback_feedback": "Incorrect. The function prints 3, but it does not return anything explicitly, so Python returns None. That means the program prints 3 and then None."
+    "fallback_feedback": "Incorrect. There are two outputs here. First, the function runs and prints 3. Then `x = f()` stores the function's return value. Because there is no `return` statement, that value is `None`, so `print(x)` prints `None`.",
+    "feedback_correct": "Correct. The function prints 3, but it does not return anything explicitly. In Python, that means the return value is `None`. So the full output is 3 and then None."
   },
   {
     "exercise_id": "RET_02",
@@ -227,11 +235,12 @@
     "correct_answer": "15",
     "accepted_correct": ["15"],
     "wrong_answers": {
-      "5": "You used the function result but ignored the + 10 outside it. add_one(4) returns 5, and then the program adds 10, giving 15.",
-      "14": "You seem to have added 10 first and then 1, or made an arithmetic slip. The function returns 5, and 5 + 10 is 15.",
-      "None": "You treated the function as if it did not return a value. But it has a return statement, so add_one(4) returns 5."
+      "5": "Not quite. `add_one(4)` does return 5, but the code does not stop there. After that, the program adds 10 more, so the final printed result is 15.",
+      "14": "Not quite. The function returns 5 because 4 + 1 = 5. Then the code adds 10, so the correct result is 5 + 10 = 15.",
+      "None": "Not quite. This function does return a value, because it has a `return` statement. The returned value is 5, and then 10 is added, giving 15."
     },
-    "fallback_feedback": "Incorrect. add_one(4) returns 5 because the function adds 1 to 4. Then the program adds 10, so the final result printed is 15."
+    "fallback_feedback": "Incorrect. Work from the inside out. `add_one(4)` returns 5. Then the code adds 10, so the final value printed is 15.",
+    "feedback_correct": "Correct. The function returns 5 because it adds 1 to 4. Then the outer `print(...)` adds 10, so the final answer is 15."
   },
   {
     "exercise_id": "RET_03",

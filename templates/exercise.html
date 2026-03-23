@@ -16,29 +16,36 @@
   </style>
 </head>
 <body>
-  <p>
-  <a href="{{ url_for('index') }}">← Topics</a>
-  {% if category_key %}
-    | <a href="{{ url_for('topic_page', category_key=category_key) }}">Back to {{ category_label }}</a>
+  {% if not study_mode %}
+    <p>
+      <a href="{{ url_for('index') }}">← Topics</a>
+      {% if category_key %}
+        | <a href="{{ url_for('topic_page', category_key=category_key) }}">Back to {{ category_label }}</a>
+      {% endif %}
+    </p>
   {% endif %}
-</p>
 
   <h1>{{ exercise.exercise_id }}</h1>
   <div class="muted">
     <span class="badge">{{ category_label }}</span>
+    {% if current_mode %}
+      <span class="badge">{{ current_mode|capitalize }}</span>
+    {% endif %}
   </div>
 
   <div class="panel">
     <pre>{{ exercise.prompt }}</pre>
   </div>
 
-  <form method="post" class="panel">
-    <label for="answer"><strong>Your answer</strong></label>
-    <div style="margin:10px 0;">
-      <input id="answer" name="answer" type="text" autocomplete="off" />
-    </div>
-    <button type="submit">Submit</button>
-  </form>
+  {% if not (study_mode and current_mode == "training" and result) %}
+    <form method="post" class="panel">
+      <label for="answer"><strong>Your answer</strong></label>
+      <div style="margin:10px 0;">
+        <input id="answer" name="answer" type="text" autocomplete="off" />
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  {% endif %}
 
   {% if result %}
     <div class="panel">
@@ -53,22 +60,32 @@
         {% endif %}
       </p>
 
-      <p><strong>Feedback:</strong> {{ result.feedback }}</p>
+      {% if result.feedback %}
+        <p><strong>Feedback:</strong> {{ result.feedback }}</p>
+      {% endif %}
       <p><strong>Correct answer:</strong> {{ result.correct_answer }}</p>
 
-      <p class="muted">
-        Logged: raw="{{ result.raw_answer }}", normalised="{{ result.normalised_answer }}"
-      </p>
+      {% if study_mode and current_mode == "training" %}
+        <p><a href="{{ url_for('study_continue') }}"><strong>Next</strong></a></p>
+      {% endif %}
+
+      {% if not study_mode %}
+        <p class="muted">
+          Logged: raw="{{ result.raw_answer }}", normalised="{{ result.normalised_answer }}"
+        </p>
+      {% endif %}
     </div>
   {% endif %}
 
-  <div class="row">
-    {% if prev_id %}
-      <a href="{{ url_for('exercise_page', exercise_id=prev_id) }}">← Prev</a>
-    {% endif %}
-    {% if next_id %}
-      <a href="{{ url_for('exercise_page', exercise_id=next_id) }}">Next →</a>
-    {% endif %}
-  </div>
+  {% if not study_mode %}
+    <div class="row">
+      {% if prev_id %}
+        <a href="{{ url_for('exercise_page', exercise_id=prev_id) }}">← Prev</a>
+      {% endif %}
+      {% if next_id %}
+        <a href="{{ url_for('exercise_page', exercise_id=next_id) }}">Next →</a>
+      {% endif %}
+    </div>
+  {% endif %}
 </body>
 </html>

@@ -16,14 +16,6 @@
   <h1>{{ title }}</h1>
 
   <p class="muted">Choose a topic section to begin.</p>
-  <div style="margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap;">
-    <a class="btn" href="{{ url_for('study_start') }}">Start Study</a>
-    <a class="btn" href="{{ url_for('start_pretest') }}">Start Pre-test</a>
-    <a class="btn" href="{{ url_for('start_training') }}">Start Training</a>
-    <a class="btn" href="{{ url_for('start_posttest') }}">Start Post-test</a>
-  </div>
-
-  <p class="muted">Current mode: {{ current_mode }}</p>
 
   {% for category in categories %}
     <div class="card">
