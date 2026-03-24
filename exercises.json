@@ -2,35 +2,25 @@
   {
     "exercise_id": "VAR_01",
     "misconception": "variable_reassignment",
+    "teaching": "A variable is a named storage place for a value. The symbol '=' means assignment. It stores a value in a variable. In a line like 'x = x + 2', Python first reads the current value of x, works out the calculation, and then stores the new result back into x. Read the code one line at a time, because a later line can change the value stored in the variable.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "What does this print?\n\nx = 3\nx = x + 2\nprint(x)",
     "correct_answer": "5",
     "accepted_correct": ["5"],
     "wrong_answers": {
-      "3": "Not quite. x does not stay as 3. The line `x = x + 2` means: take the current value of x, add 2, and store the new result back into x. So x starts as 3, then becomes 5, and `print(x)` prints 5.",
-      "32": "Not quite. That answer would only make sense if Python were joining text together. Here, x is a number, so `x + 2` means numerical addition: 3 + 2 = 5.",
+      "3": "Not quite. x does not stay as 3. The line 'x = x + 2' means: take the current value of x, add 2, and store the new result back into x. So x starts as 3, then becomes 5, and 'print(x)' prints 5.",
+      "32": "Not quite. That answer would only make sense if Python were joining text together. Here, x is a number, so 'x + 2' means numerical addition: 3 + 2 = 5.",
       "x+2": "Not quite. Python does not print the expression itself here. It works out the expression first, changes x to that result, and then prints the final value stored in x, which is 5.",
-      "2": "Not quite. You used only the amount being added. But `x = x + 2` uses the old value of x as well. Since x was 3, the new value becomes 3 + 2 = 5."
+      "2": "Not quite. You used only the amount being added. But 'x = x + 2' uses the old value of x as well. Since x was 3, the new value becomes 3 + 2 = 5."
     },
-    "fallback_feedback": "Incorrect. Read the code line by line. First x is 3. Then `x = x + 2` updates x to 5. After that, `print(x)` prints 5.",
-    "feedback_correct": "Correct. This code runs one line at a time. x starts as 3, then `x = x + 2` updates it to 5, so the final printed value is 5."
-  },
-  {
-    "exercise_id": "VAR_06",
-    "misconception": "variable_reassignment",
-    "prompt": "What does this print?\n\nx = 2\ny = x\nx = 5\nprint(y)",
-    "correct_answer": "2",
-    "accepted_correct": ["2"],
-    "wrong_answers": {
-      "5": "Not quite. `y = x` gives y the value that x has at that moment, which is 2. After that, changing x to 5 does not go back and change y. So `print(y)` still prints 2.",
-      "x": "Not quite. `print(y)` prints the value stored in y, not the letter y or the variable name x. Since y was given the value 2, the output is 2.",
-      "25": "Not quite. The code does not join 2 and 5 together. y is set to 2 first, then x changes to 5 later, but y stays 2 the whole time."
-    },
-    "fallback_feedback": "Incorrect. Go step by step. x starts as 2. Then `y = x`, so y also becomes 2. Later x changes to 5, but y does not change. That is why `print(y)` prints 2.",
-    "feedback_correct": "Correct. `y = x` copies the current value of x into y. At that point the value is 2. Later x changes to 5, but y keeps the old value 2, so the output is 2."
+    "fallback_feedback": "Incorrect. Read the code line by line. First x is 3. Then 'x = x + 2' updates x to 5. After that, 'print(x)' prints 5.",
+    "feedback_correct": "Correct. This code runs one line at a time. x starts as 3, then 'x = x + 2' updates it to 5, so the final printed value is 5."
   },
   {
     "exercise_id": "VAR_02",
     "misconception": "variable_reassignment",
+    "teaching": "A variable can change as the program runs. When you see 'x = x - 4', Python uses the current value of x, performs the subtraction, and stores the new result back into x. The next line then uses that updated value, not the original one. For this kind of question, go one line at a time and track the value after each line.",
+    "format_hint": "Write the value after each line, separated by spaces, in order.",
     "prompt": "What is x after each line is executed?\n\nx = 10\nx = x - 4\nx = x * 2",
     "correct_answer": "10, 6, 12",
     "accepted_correct": ["10, 6, 12", "10,6,12", "10 6 12"],
@@ -44,6 +34,8 @@
   {
     "exercise_id": "VAR_03",
     "misconception": "variable_reassignment",
+    "teaching": "The symbol '=' means assignment. It copies the value on the right into the variable on the left. Python runs assignments one line at a time, so later lines use the updated values from earlier lines. Do not think of this as an automatic swap unless the code explicitly stores old values somewhere first.",
+    "format_hint": "Write exactly what is printed, with the two values separated by a space.",
     "prompt": "What does this print?\n\na = 1\nb = 2\na = b\nb = a\nprint(a, b)",
     "correct_answer": "2 2",
     "accepted_correct": ["2 2", "2, 2", "2,2"],
@@ -57,6 +49,8 @@
   {
     "exercise_id": "VAR_04",
     "misconception": "variable_reassignment",
+    "teaching": "Lists are different from simple numbers because two variables can refer to the same list object. In a line like 'b = a', both names can end up referring to one shared list. A method like 'append(...)' changes the list itself, rather than creating a brand new one.",
+    "format_hint": "Write the list exactly as printed, including the square brackets.",
     "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb.append(3)\nprint(a)",
     "correct_answer": "[1, 2, 3]",
     "accepted_correct": ["[1, 2, 3]", "[1,2,3]"],
@@ -69,6 +63,8 @@
   {
     "exercise_id": "VAR_05",
     "misconception": "variable_reassignment",
+    "teaching": "A line like 'b = a' can make two variables refer to the same list. But reassigning a variable later is different from modifying the original list. It is important to tell the difference between changing a list itself and making a variable point to a different list.",
+    "format_hint": "Write the list exactly as printed, including the square brackets.",
     "prompt": "What does this print?\n\na = [1, 2]\nb = a\nb = [9, 9]\nprint(a)",
     "correct_answer": "[1, 2]",
     "accepted_correct": ["[1, 2]", "[1,2]"],
@@ -77,39 +73,58 @@
       "[1, 2, 9, 9]": "Assignment does not combine lists here. Reassigning b just makes b point to a different list; a stays as [1, 2]."
     },
     "fallback_feedback": "Incorrect. Reassigning b does not change a. After b = [9, 9], only b points to the new list, so a still prints as [1, 2]."
-  }
-,
+  },
+   {
+    "exercise_id": "VAR_06",
+    "misconception": "variable_reassignment",
+    "teaching": "A variable stores a value. When Python runs 'y = x', it gives y whatever value x has at that moment. If x changes later, y does not automatically change as well unless the code explicitly updates y too. Read the code line by line and track what each variable holds after each line.",
+    "format_hint": "Write only the final number that is printed.",
+    "prompt": "What does this print?\n\nx = 2\ny = x\nx = 5\nprint(y)",
+    "correct_answer": "2",
+    "accepted_correct": ["2"],
+    "wrong_answers": {
+      "5": "Not quite. 'y = x' gives y the value that x has at that moment, which is 2. After that, changing x to 5 does not go back and change y. So 'print(y)' still prints 2.",
+      "x": "Not quite. 'print(y)' prints the value stored in y, not the letter y or the variable name x. Since y was given the value 2, the output is 2.",
+      "25": "Not quite. The code does not join 2 and 5 together. y is set to 2 first, then x changes to 5 later, but y stays 2 the whole time."
+    },
+    "fallback_feedback": "Incorrect. Go step by step. x starts as 2. Then 'y = x', so y also becomes 2. Later x changes to 5, but y does not change. That is why 'print(y)' prints 2.",
+    "feedback_correct": "Correct. 'y = x' copies the current value of x into y. At that point the value is 2. Later x changes to 5, but y keeps the old value 2, so the output is 2."
+  },
   {
     "exercise_id": "EQ_01",
     "misconception": "assignment_vs_equality",
+    "teaching": "The symbol '=' means assignment, which stores a value in a variable. The symbol '==' means comparison, which checks whether two values are equal. A comparison does not change the variable, it simply produces either 'True' or 'False'.",
     "prompt": "What does this print?\n\nx = 5\nprint(x == 5)",
     "correct_answer": "True",
     "accepted_correct": ["True", "true"],
     "wrong_answers": {
-      "5": "Not quite. `==` does not assign a value and it does not print x itself. It asks a question: 'Is x equal to 5?' The answer to that question is either `True` or `False`. Here the answer is `True`.",
-      "False": "Not quite. x really is 5 in this code. So when Python checks `x == 5`, the comparison is true, which means the program prints `True`.",
-      "x==5": "Not quite. Python does not print the comparison text itself. It evaluates the comparison first. Since x is 5, `x == 5` becomes `True`, and that is what gets printed."
+      "5": "Not quite. '==' does not assign a value and it does not print x itself. It asks a question: 'Is x equal to 5?' The answer to that question is either 'True' or 'False'. Here the answer is 'True'.",
+      "False": "Not quite. x really is 5 in this code. So when Python checks 'x == 5', the comparison is true, which means the program prints 'True'.",
+      "x==5": "Not quite. Python does not print the comparison text itself. It evaluates the comparison first. Since x is 5, 'x == 5' becomes 'True', and that is what gets printed."
     },
-    "fallback_feedback": "Incorrect. `==` means 'compare these two values'. Because x has the value 5, the comparison `x == 5` is true, so the program prints `True`.",
-    "feedback_correct": "Correct. `==` checks whether two values are equal. Since x is 5, the statement `x == 5` is true, so `print(...)` prints `True`."
+    "fallback_feedback": "Incorrect. '==' means 'compare these two values'. Because x has the value 5, the comparison 'x == 5' is true, so the program prints 'True'.",
+    "feedback_correct": "Correct. '==' checks whether two values are equal. Since x is 5, the statement 'x == 5' is true, so 'print(...)' prints 'True'."
   },
   {
     "exercise_id": "EQ_02",
     "misconception": "assignment_vs_equality",
+    "teaching": "An 'if' statement checks whether a condition is true. If the condition is true, Python runs the indented code underneath 'if'. If it is false, Python skips that part and runs the indented code underneath 'else' instead. The symbol '==' means 'is equal to', so you should check the condition before deciding which branch runs.",
+    "format_hint": "Write only the single letter that is printed.",
     "prompt": "What does this print?\n\nx = 4\nif x == 5:\n    print(\"A\")\nelse:\n    print(\"B\")",
     "correct_answer": "B",
     "accepted_correct": ["B", "b"],
     "wrong_answers": {
-      "A": "Not quite. The condition is `x == 5`, which means 'is x equal to 5?' x is 4, not 5, so that condition is false. Because it is false, Python skips the `print(\"A\")` line and runs the `else` branch instead.",
-      "True": "Not quite. This code does not print the value of the condition itself. It uses the condition to decide which branch to run. Since x is not 5, the `else` branch runs and prints `B`.",
-      "A B": "Not quite. In an `if` statement, Python only runs one branch. Here the condition is false, so only the `else` branch runs. That means only `B` is printed."
+      "A": "Not quite. The condition is 'x == 5', which means 'is x equal to 5?' x is 4, not 5, so that condition is false. Because it is false, Python skips the 'print(\"A\")' line and runs the 'else' branch instead.",
+      "True": "Not quite. This code does not print the value of the condition itself. It uses the condition to decide which branch to run. Since x is not 5, the 'else' branch runs and prints 'B'.",
+      "A B": "Not quite. In an 'if' statement, Python only runs one branch. Here the condition is false, so only the 'else' branch runs. That means only 'B' is printed."
     },
-    "fallback_feedback": "Incorrect. Check the condition first: x is 4, so `x == 5` is false. That means Python runs the `else` part, and the output is `B`.",
-    "feedback_correct": "Correct. Python checks the condition `x == 5` first. Because x is 4, the condition is false, so it skips the first branch and prints `B` from the `else` branch."
+    "fallback_feedback": "Incorrect. Check the condition first: x is 4, so 'x == 5' is false. That means Python runs the 'else' part, and the output is 'B'.",
+    "feedback_correct": "Correct. Python checks the condition 'x == 5' first. Because x is 4, the condition is false, so it skips the first branch and prints 'B' from the 'else' branch."
   },
   {
     "exercise_id": "EQ_03",
     "misconception": "assignment_vs_equality",
+    "teaching": "In Python, '=' means assignment, while '==' means comparison. Inside an 'if' condition, Python expects a comparison or another true/false expression. So when you see an 'if' statement, pay close attention to whether the code is checking a condition or trying to assign a value.",
     "prompt": "What happens when this code runs?\n\nx = 5\nif x = 5:\n    print(\"yes\")",
     "correct_answer": "SyntaxError",
     "accepted_correct": ["SyntaxError", "syntaxerror", "syntax error", "a syntax error", "a syntaxerror"],
@@ -123,6 +138,8 @@
   {
     "exercise_id": "EQ_04",
     "misconception": "assignment_vs_equality",
+    "teaching": "Read the code in two stages. First, 'x = y' is assignment, so x takes whatever value is stored in y. Then 'x == y' is a comparison, which checks whether the two values are equal and produces 'True' or 'False'. This question tests the difference between changing a variable and comparing two values.",
+    "format_hint": "Write exactly what is printed, in order, separated by spaces.",
     "prompt": "What does this print?\n\nx = 1\ny = 2\nx = y\nprint(x == y, x, y)",
     "correct_answer": "True 2 2",
     "accepted_correct": ["True 2 2", "true 2 2", "True, 2, 2", "True,2,2"],
@@ -136,6 +153,7 @@
   {
     "exercise_id": "EQ_05",
     "misconception": "assignment_vs_equality",
+    "teaching": "The symbol '==' checks whether two values are equal. It does not ask whether they are the same variable name. For lists, Python compares their contents when using '==', so you should look at the items inside the lists rather than the variable names.",
     "prompt": "What does this print?\n\na = [1, 2]\nb = [1, 2]\nprint(a == b)",
     "correct_answer": "True",
     "accepted_correct": ["True", "true"],
@@ -149,20 +167,24 @@
   {
     "exercise_id": "LOOP_01",
     "misconception": "loop_boundaries",
+    "teaching": "A 'for' loop repeats the same block of code for each value in a sequence. 'range(n)' starts at 0 by default and stops before n. On each loop, the loop variable takes the next value from the range, and the indented code runs once for that value.",
+    "format_hint": "Write exactly what is printed, in order, separated by spaces.",
     "prompt": "What does this print?\n\nfor i in range(5):\n    print(i)",
     "correct_answer": "0 1 2 3 4",
     "accepted_correct": ["0 1 2 3 4", "0, 1, 2, 3, 4", "0,1,2,3,4", "0\n1\n2\n3\n4"],
     "wrong_answers": {
-      "0 1 2 3 4 5": "Not quite. In Python, `range(5)` starts at 0 and stops before 5. So 5 itself is not included. The values are 0, 1, 2, 3 and 4.",
-      "1 2 3 4 5": "Not quite. `range(5)` starts at 0 by default, not 1. It then continues up to, but not including, 5. So the output is 0, 1, 2, 3, 4.",
-      "5": "Not quite. The loop runs once for each value in `range(5)`. That means it prints five separate values: 0, 1, 2, 3 and 4, not just the number 5."
+      "0 1 2 3 4 5": "Not quite. In Python, 'range(5)' starts at 0 and stops before 5. So 5 itself is not included. The values are 0, 1, 2, 3 and 4.",
+      "1 2 3 4 5": "Not quite. 'range(5)' starts at 0 by default, not 1. It then continues up to, but not including, 5. So the output is 0, 1, 2, 3, 4.",
+      "5": "Not quite. The loop runs once for each value in 'range(5)'. That means it prints five separate values: 0, 1, 2, 3 and 4, not just the number 5."
     },
-    "fallback_feedback": "Incorrect. `range(5)` produces these values in order: 0, 1, 2, 3, 4. The loop prints each one on a separate line, so the output is 0 1 2 3 4.",
-    "feedback_correct": "Correct. `range(5)` starts at 0 and stops before 5, so the loop prints 0, 1, 2, 3 and 4."
+    "fallback_feedback": "Incorrect. 'range(5)' produces these values in order: 0, 1, 2, 3, 4. The loop prints each one on a separate line, so the output is 0 1 2 3 4.",
+    "feedback_correct": "Correct. 'range(5)' starts at 0 and stops before 5, so the loop prints 0, 1, 2, 3 and 4."
   },
   {
     "exercise_id": "LOOP_02",
     "misconception": "loop_boundaries",
+    "teaching": "A 'for' loop runs once for each value in the range. In 'range(start, stop)', Python begins at the start value and stops before the stop value. The line 'count += 1' means 'add 1 to count and store the result back into count', so count increases once on each loop.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "How many times does this loop run?\n\ncount = 0\nfor i in range(2, 6):\n    count += 1\nprint(count)",
     "correct_answer": "4",
     "accepted_correct": ["4"],
@@ -176,6 +198,8 @@
   {
     "exercise_id": "LOOP_03",
     "misconception": "loop_boundaries",
+    "teaching": "A 'while' loop keeps running as long as its condition is true. You should check the condition first, then see how the variable changes inside the loop. The line 'x -= 1' means the same thing as 'x = x - 1', so the value gets smaller each time the loop runs.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "What does this print?\n\nx = 3\nwhile x > 0:\n    x -= 1\nprint(x)",
     "correct_answer": "0",
     "accepted_correct": ["0"],
@@ -189,62 +213,72 @@
   {
     "exercise_id": "LOOP_04",
     "misconception": "loop_boundaries",
+    "teaching": "'range(start, stop)' begins at the first number and stops before the second number. So the second number is not included. A 'for' loop runs once for each value produced by that range, and the indented code runs once on each loop.",
+    "format_hint": "Write exactly what is printed, in order, separated by spaces.",
     "prompt": "What does this print?\n\nfor i in range(1, 4):\n    print(i)",
     "correct_answer": "1 2 3",
     "accepted_correct": ["1 2 3", "1, 2, 3", "1\n2\n3"],
     "wrong_answers": {
-      "1 2 3 4": "Not quite. `range(1, 4)` starts at 1 but stops before 4. That means 4 is not included, so the loop prints only 1, 2 and 3.",
-      "0 1 2 3": "Not quite. This range does not start at 0. The first number in `range(1, 4)` tells Python where to start, so it begins at 1.",
-      "2 3 4": "Not quite. The loop does not start at 2 and it does not include 4. `range(1, 4)` means start at 1 and stop before 4, so the values are 1, 2 and 3."
+      "1 2 3 4": "Not quite. 'range(1, 4)' starts at 1 but stops before 4. That means 4 is not included, so the loop prints only 1, 2 and 3.",
+      "0 1 2 3": "Not quite. This range does not start at 0. The first number in 'range(1, 4)' tells Python where to start, so it begins at 1.",
+      "2 3 4": "Not quite. The loop does not start at 2 and it does not include 4. 'range(1, 4)' means start at 1 and stop before 4, so the values are 1, 2 and 3."
     },
-    "fallback_feedback": "Incorrect. `range(1, 4)` begins at 1 and stops before 4. So the loop prints 1, 2 and 3.",
-    "feedback_correct": "Correct. The first number in `range(1, 4)` is the start, and the second number is the stop value that is not included. So the output is 1, 2, 3."
+    "fallback_feedback": "Incorrect. 'range(1, 4)' begins at 1 and stops before 4. So the loop prints 1, 2 and 3.",
+    "feedback_correct": "Correct. The first number in 'range(1, 4)' is the start, and the second number is the stop value that is not included. So the output is 1, 2, 3."
   },
   {
     "exercise_id": "LOOP_05",
     "misconception": "loop_boundaries",
+    "teaching": "A 'for' loop repeats code for each value in a range. In 'range(start, stop)', Python begins at the start value and stops before the stop value. The line 'total += i' means 'add the current value of i to total, then store the result back into total'. It is a shorter way of writing 'total = total + i'.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "What does this print?\n\ntotal = 0\nfor i in range(1, 6):\n    total += i\nprint(total)",
     "correct_answer": "15",
     "accepted_correct": ["15"],
     "wrong_answers": {
-      "21": "Not quite. That answer would happen if the loop included 6 as well, but `range(1, 6)` stops before 6. So the loop adds 1 + 2 + 3 + 4 + 5, which equals 15.",
-      "10": "Not quite. That would be the total if you stopped too early at 4. But `range(1, 6)` includes 1, 2, 3, 4 and 5, so you must add all five numbers.",
-      "6": "Not quite. 6 is the stop value in the range, not the final total. The code keeps adding each loop value to `total`, so the final result is 15."
+      "21": "Not quite. That answer would happen if the loop included 6 as well, but 'range(1, 6)' stops before 6. So the loop adds 1 + 2 + 3 + 4 + 5, which equals 15.",
+      "10": "Not quite. That would be the total if you stopped too early at 4. But 'range(1, 6)' includes 1, 2, 3, 4 and 5, so you must add all five numbers.",
+      "6": "Not quite. 6 is the stop value in the range, not the final total. The code keeps adding each loop value to 'total', so the final result is 15."
     },
     "fallback_feedback": "Incorrect. Start with total = 0. Then the loop adds 1, then 2, then 3, then 4, then 5. After all those additions, total becomes 15.",
-    "feedback_correct": "Correct. The loop runs through 1, 2, 3, 4 and 5, and each value is added to `total`. So the final total is 15."
+    "feedback_correct": "Correct. The loop runs through 1, 2, 3, 4 and 5, and each value is added to 'total'. So the final total is 15."
   },
   {
     "exercise_id": "RET_01",
     "misconception": "return_vs_print_and_scope",
+    "teaching": "'def' is used to define a function, which is a named block of code. 'print(...)' displays something on the screen, but it does not send that value back to the rest of the program. A 'return' statement sends a value back. If a function has no 'return' statement, Python gives it a default return value instead.",
+    "format_hint": "Write exactly what is printed, in order, separated by a space.",
     "prompt": "What does this print?\n\ndef f():\n    print(3)\n\nx = f()\nprint(x)",
     "correct_answer": "3 None",
     "accepted_correct": ["3 None", "3, None", "3\nNone", "3 none"],
     "wrong_answers": {
-      "3": "Not quite. The function does print 3, but that is only the first output. Because the function has no `return` statement, it returns `None` by default. So `x = f()` stores `None`, and then `print(x)` prints `None` as the second output.",
-      "3 3": "Not quite. `print(3)` shows 3 on the screen, but it does not return the value 3. Since the function does not return anything, Python uses `None` as the return value.",
-      "None": "Not quite. You noticed the return value correctly, but you missed the earlier `print(3)` inside the function. So the full output is 3 first, then None."
+      "3": "Not quite. The function does print 3, but that is only the first output. Because the function has no 'return' statement, it returns 'None' by default. So 'x = f()' stores 'None', and then 'print(x)' prints 'None' as the second output.",
+      "3 3": "Not quite. 'print(3)' shows 3 on the screen, but it does not return the value 3. Since the function does not return anything, Python uses 'None' as the return value.",
+      "None": "Not quite. You noticed the return value correctly, but you missed the earlier 'print(3)' inside the function. So the full output is 3 first, then None."
     },
-    "fallback_feedback": "Incorrect. There are two outputs here. First, the function runs and prints 3. Then `x = f()` stores the function's return value. Because there is no `return` statement, that value is `None`, so `print(x)` prints `None`.",
-    "feedback_correct": "Correct. The function prints 3, but it does not return anything explicitly. In Python, that means the return value is `None`. So the full output is 3 and then None."
+    "fallback_feedback": "Incorrect. There are two outputs here. First, the function runs and prints 3. Then 'x = f()' stores the function's return value. Because there is no 'return' statement, that value is 'None', so 'print(x)' prints 'None'.",
+    "feedback_correct": "Correct. The function prints 3, but it does not return anything explicitly. In Python, that means the return value is 'None'. So the full output is 3 and then None."
   },
   {
     "exercise_id": "RET_02",
     "misconception": "return_vs_print_and_scope",
+    "teaching": "'def' defines a function. A 'return' statement sends a value back to wherever the function was called. When a function call appears inside a larger expression, Python works out the returned value first and then continues with the rest of the expression around it.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "What does this print?\n\ndef add_one(n):\n    return n + 1\n\nprint(add_one(4) + 10)",
     "correct_answer": "15",
     "accepted_correct": ["15"],
     "wrong_answers": {
-      "5": "Not quite. `add_one(4)` does return 5, but the code does not stop there. After that, the program adds 10 more, so the final printed result is 15.",
+      "5": "Not quite. 'add_one(4)' does return 5, but the code does not stop there. After that, the program adds 10 more, so the final printed result is 15.",
       "14": "Not quite. The function returns 5 because 4 + 1 = 5. Then the code adds 10, so the correct result is 5 + 10 = 15.",
-      "None": "Not quite. This function does return a value, because it has a `return` statement. The returned value is 5, and then 10 is added, giving 15."
+      "None": "Not quite. This function does return a value, because it has a 'return' statement. The returned value is 5, and then 10 is added, giving 15."
     },
-    "fallback_feedback": "Incorrect. Work from the inside out. `add_one(4)` returns 5. Then the code adds 10, so the final value printed is 15.",
-    "feedback_correct": "Correct. The function returns 5 because it adds 1 to 4. Then the outer `print(...)` adds 10, so the final answer is 15."
+    "fallback_feedback": "Incorrect. Work from the inside out. 'add_one(4)' returns 5. Then the code adds 10, so the final value printed is 15.",
+    "feedback_correct": "Correct. The function returns 5 because it adds 1 to 4. Then the outer 'print(...)' adds 10, so the final answer is 15."
   },
   {
     "exercise_id": "RET_03",
     "misconception": "return_vs_print_and_scope",
+    "teaching": "A variable created inside a function is local to that function unless Python is told otherwise. So a variable name used inside a function is not automatically the same as a variable with the same name outside the function. This question tests the difference between local variables and outer variables.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "What does this print?\n\nx = 10\n\ndef g():\n    x = 99\n\ng()\nprint(x)",
     "correct_answer": "10",
     "accepted_correct": ["10"],
@@ -258,6 +292,8 @@
   {
     "exercise_id": "RET_04",
     "misconception": "return_vs_print_and_scope",
+    "teaching": "A function parameter is a local variable inside the function. Changing that local variable inside the function does not automatically change the outer variable by itself. The key thing to watch is whether the returned value is later stored back into a variable outside the function.",
+    "format_hint": "Write only the final number that is printed.",
     "prompt": "What does this print?\n\nx = 10\n\ndef g(x):\n    x = 99\n    return x\n\nx = g(x)\nprint(x)",
     "correct_answer": "99",
     "accepted_correct": ["99"],
@@ -271,6 +307,8 @@
   {
     "exercise_id": "RET_05",
     "misconception": "return_vs_print_and_scope",
+    "teaching": "A 'return' statement stops a function immediately. Any code written after 'return' inside that same function will not run, because the function has already ended by that point.",
+    "format_hint": "Write exactly what is printed.",
     "prompt": "What does this print?\n\ndef h():\n    print(\"A\")\n    return\n    print(\"B\")\n\nh()",
     "correct_answer": "A",
     "accepted_correct": ["A", "a"],

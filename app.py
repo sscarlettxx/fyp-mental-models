@@ -60,7 +60,10 @@ for category_key, _category_label in CATEGORY_ORDER:
 
 # JSON logging helper
 def log_answer(user_id, exercise_id, answer, correct, mode):
-    log_file = "/var/data/responses.json"
+    if os.path.isdir("/var/data"):
+        log_file = "/var/data/responses.json"
+    else:
+        log_file = "responses.json"
 
     if not os.path.exists(log_file):
         with open(log_file, "w") as f:
@@ -211,6 +214,7 @@ def study_continue():
 @app.route("/exercise/<exercise_id>", methods=["GET", "POST"])
 def exercise_page(exercise_id: str):
     mode = session.get("mode", "training")
+    show_training_support = (mode == "training")
 
     if mode == "pretest":
         ex = _pretest_by_id.get(exercise_id)
@@ -277,6 +281,7 @@ def exercise_page(exercise_id: str):
         category_label=dict(CATEGORY_ORDER).get(ex["misconception"], ex["misconception"]),
         current_mode=mode,
         study_mode=session.get("study_mode", False),
+        show_training_support=show_training_support,
     )
 
 

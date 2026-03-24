@@ -5,5 +5,103 @@
         "answer": "2",
         "correct": true,
         "mode": "pretest"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "PRE_02",
+        "answer": "",
+        "correct": false,
+        "mode": "pretest"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "PRE_03",
+        "answer": "",
+        "correct": false,
+        "mode": "pretest"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "PRE_04",
+        "answer": "",
+        "correct": false,
+        "mode": "pretest"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "PRE_05",
+        "answer": "",
+        "correct": false,
+        "mode": "pretest"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "VAR_01",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "VAR_06",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "EQ_01",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "EQ_02",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "LOOP_01",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "LOOP_04",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "LOOP_05",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "RET_01",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "RET_02",
+        "answer": "",
+        "correct": false,
+        "mode": "training"
+    },
+    {
+        "user_id": "544c075f-5b89-45d7-87ba-ffeb3747b880",
+        "exercise_id": "POST_01",
+        "answer": "",
+        "correct": false,
+        "mode": "posttest"
     }
 ]
