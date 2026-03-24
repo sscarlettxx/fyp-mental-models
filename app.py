@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
 from engine import load_exercises, index_by_id, check_answer, neighbours
-from logger import log_attempt, ensure_log_file
+import json
+import os
+import uuid
 
 APP_TITLE = "Mental Models Trainer"
 EXERCISES_PATH = "exercises.json"
@@ -55,7 +57,37 @@ for category_key, _category_label in CATEGORY_ORDER:
         ex for ex in _exercises_list if ex["misconception"] == category_key
     ]
 
-ensure_log_file(LOG_PATH)
+
+# JSON logging helper
+def log_answer(user_id, exercise_id, answer, correct, mode):
+    log_file = "/var/data/responses.json"
+
+    if not os.path.exists(log_file):
+        with open(log_file, "w") as f:
+            json.dump([], f)
+
+    with open(log_file, "r") as f:
+        data = json.load(f)
+
+    # Only keep FIRST attempt
+    already_answered = any(
+        entry["user_id"] == user_id and entry["exercise_id"] == exercise_id
+        for entry in data
+    )
+
+    if already_answered:
+        return
+
+    data.append({
+        "user_id": user_id,
+        "exercise_id": exercise_id,
+        "answer": answer,
+        "correct": correct,
+        "mode": mode
+    })
+
+    with open(log_file, "w") as f:
+        json.dump(data, f, indent=4)
 
 @app.route("/")
 def index():
@@ -199,6 +231,9 @@ def exercise_page(exercise_id: str):
     prev_id, next_id = neighbours(current_ids, exercise_id)
 
     result = None
+
+    if "user_id" not in session:
+        session["user_id"] = str(uuid.uuid4())
     if request.method == "POST":
         user_answer = request.form.get("answer", "")
         result = check_answer(ex, user_answer)
@@ -206,14 +241,12 @@ def exercise_page(exercise_id: str):
         if mode != "training":
             result["feedback"] = ""
 
-        log_attempt(
-            LOG_PATH,
-            exercise_id=str(ex["exercise_id"]),
-            misconception=str(ex["misconception"]),
-            raw_answer=result["raw_answer"],
-            normalised_answer=result["normalised_answer"],
-            result=result["result"],
-            wrong_key=result["wrong_key"],
+        log_answer(
+            session["user_id"],
+            str(ex["exercise_id"]),
+            user_answer,
+            result["result"] == "correct",
+            mode
         )
 
         study_mode = session.get("study_mode", False)
